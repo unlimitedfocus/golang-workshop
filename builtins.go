@@ -18,10 +18,10 @@ func builtins() {
 		return true
 	}
 	// Cannot compare slices with == like you can with arrays
-	assert(comparator(slice, sliceFinal) == false)
+	assert(comparator(slice, sliceFinal) == true)
 
 	capacity := cap(sliceFinal) - 1
-	assert(capacity == capLength)
+	assert(capacity == capLength - 1)
 
 	length := len(sliceFinal)
 	assert(length == 3)
@@ -31,12 +31,12 @@ func builtins() {
 	list["num2"] = 3
 
 	delete(list, "num1")
-	assert(len(list) == 2)
+	assert(len(list) == 1)
 
 	// new returns a pointer to the newly allocated type
 	// since new returns a pointer you must use the deference operator
 	num := new(int)
 	*num++
 	*num--
-	assert(*num == 1)
+	assert(*num == 0)
 }
